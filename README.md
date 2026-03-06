@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# projects
-Contains my work
-=======
 # Customer Sentiment Analysis & Urgency Alert System
 
 A professional-grade NLP pipeline that performs dual-stream analysis on customer reviews: **Supervised Sentiment Classification** and **Semantic Urgency Detection**.

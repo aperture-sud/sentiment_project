@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Dashboard</title>
+    <style>
+        :root { --primary: #6366f1; --urgent: #ef4444; --bg: #f1f5f9; }
+        body { font-family: 'Inter', system-ui; background: var(--bg); display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); width: 100%; max-width: 500px; }
+        h1 { font-size: 1.25rem; color: #334155; margin-bottom: 1rem; }
+        textarea { width: 100%; height: 120px; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 10px; box-sizing: border-box; margin-bottom: 1rem; }
+        button { width: 100%; padding: 0.8rem; background: var(--primary); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; }
+        
+        .result-section { margin-top: 1.5rem; display: none; }
+        .score-grid { display: grid; gap: 10px; margin-top: 10px; }
+        .score-item { padding: 8px; background: #f8fafc; border-radius: 6px; display: flex; justify-content: space-between; font-size: 0.9rem; }
+        
+        /* The On-Screen Alert */
+        #alertBox { margin-top: 1.5rem; padding: 1rem; background: #fee2e2; color: #991b1b; border-radius: 10px; border-left: 5px solid var(--urgent); display: none; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Sentiment & Urgency Analyzer</h1>
+    <textarea id="userInput" placeholder="Enter or paste review..."></textarea>
+    <button id="analyzeBtn">Analyze Review</button>
+
+    <div id="resultSection" class="result-section">
+        <p><strong>Sentiment:</strong> <span id="resSentiment"></span></p>
+        <p><strong>Confidence Breakdown:</strong></p>
+        <div id="confGrid" class="score-grid"></div>
+        <p><strong>Urgency Score:</strong> <span id="resUrgency"></span></p>
+        
+        <div id="alertBox">Urgent review detected! Added to triage file.</div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('analyzeBtn').addEventListener('click', async () => {
+        const text = document.getElementById('userInput').value;
+        const btn = document.getElementById('analyzeBtn');
+        if (!text) return;
+
+        btn.innerText = "Analyzing...";
+        
+        try {
+            const res = await fetch('http://127.0.0.1:8000/analyze', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            const data = await res.json();
+
+            // Update Text
+            document.getElementById('resSentiment').innerText = data.sentiment.toUpperCase();
+            document.getElementById('resUrgency').innerText = data.urgency_score;
+            document.getElementById('resultSection').style.display = 'block';
+
+            // Dynamic Confidence Breakdown
+            const grid = document.getElementById('confGrid');
+            grid.innerHTML = ''; // Clear previous
+            for (const [label, score] of Object.entries(data.confidence)) {
+                grid.innerHTML += `<div class="score-item"><span>${label}</span><span>${(score*100).toFixed(1)}%</span></div>`;
+            }
+
+            // On-screen Alert logic
+            document.getElementById('alertBox').style.display = data.is_urgent ? 'block' : 'none';
+
+        } catch (e) {
+            alert("Connection error. Is your FastAPI server running?");
+        } finally {
+            btn.innerText = "Analyze Review";
+        }
+    });
+</script>
+</body>
+</html>
