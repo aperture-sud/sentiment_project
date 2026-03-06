@@ -16,6 +16,7 @@ This system processes reviews using two distinct methods to optimize for both ac
 * **Confidence Breakdown:** Provides respective confidence scores for Sentiment, helping to identify "borderline" reviews.
 
 ## Project Structure
+```text
 sentiment_project/
 ├── data/
 │   └── reviews.csv           # Required for Sentiment training
@@ -25,5 +26,5 @@ sentiment_project/
 │   └── predict.py            # Live CLI interface with silent loading & triage logging
 ├── urgent_triage.txt         # Auto-generated logs for urgent reviews
 ├── requirements.txt          # Python dependencies
-└── README.md
->>>>>>> 5d65d13 (Complete project)
+└── README.md                 # Project Documentation
+
