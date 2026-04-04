@@ -5,7 +5,7 @@ A professional-grade NLP pipeline that performs dual-stream analysis on customer
 This system processes reviews using two distinct methods to optimize for both accuracy and flexibility:
 
 * **Sentiment Module (Supervised):** Uses `TF-IDF` vectorisation and `LogisticRegression`. It requires `reviews.csv` training data to learn patterns (Positive, Neutral, Negative).
-* **Urgency Module (Semantic):** An unsupervised system using `SentenceTransformers` (`all-MiniLM-L6-v2`). Instead of error-prone keyword matching, it calculates the **Cosine Similarity** between incoming text and predefined "Urgent Prototypes." This ensures the system understands context (e.g., "I need my money back" is flagged as urgent even without the word "refund").
+* **Urgency Module (Semantic):** An unsupervised system using `SentenceTransformers` (`all-MiniLM-L6-v2`). Instead of error-prone keyword matching, it calculates the **Cosine Similarity** between incoming text and predefined "Urgent Prototypes." This ensures the system understands context (e.g., "I need my money back" is flagged as urgent even without the word "urgent").
 
 
 
