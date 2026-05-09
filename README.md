@@ -31,6 +31,7 @@ sentiment_project/
 ```
 
 ## Setup, Installation and Run
+```text
 
 ### 1. Clone Repository
 git clone <your-repo-link>
@@ -61,3 +62,5 @@ uvicorn main:app --reload
 
 ### 7. Run CLI (Optional)
 python3 src/predict.py
+
+```
