@@ -39,8 +39,8 @@ cd sentiment_project
 ### 2. Install Dependencies
 pip install -r requirements.txt
 
-#### If requirements.txt is missing:
-#### pip install pandas numpy scikit-learn joblib sentence-transformers torch fastapi uvicorn
+##### If requirements.txt is missing:
+##### pip install pandas numpy scikit-learn joblib sentence-transformers torch fastapi uvicorn
 
 ### 3. Verify Structure
 ls
@@ -49,12 +49,12 @@ ls
 
 
 ### 4. Add Dataset
-#### Place at: data/reviews.csv
-#### Format:
-#### review,sentiment
-#### "Great product",Positive
-#### "Bad service",Negative
-#### "Okay experience",Neutral
+##### Place at: data/reviews.csv
+##### Format:
+##### review,sentiment
+##### "Great product",Positive
+##### "Bad service",Negative
+##### "Okay experience",Neutral
 
 ### 5. Train Models
 python3 src/train.py
@@ -62,9 +62,9 @@ python3 src/train.py
 ### 6. Run API Server
 uvicorn main:app --reload
 
-# Open in browser:
-# http://127.0.0.1:8000
-# http://127.0.0.1:8000/docs
+### Open in browser:
+#### http://127.0.0.1:8000
+#### http://127.0.0.1:8000/docs
 
 ### 7. Run CLI (Optional)
 python3 src/predict.py
