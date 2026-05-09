@@ -39,12 +39,10 @@ cd sentiment_project
 ### 2. Install Dependencies
 pip install -r requirements.txt
 
-##### If requirements.txt is missing:
-###### pip install pandas numpy scikit-learn joblib sentence-transformers torch fastapi uvicorn
+##### If requirements.txt is missing: pip install pandas numpy scikit-learn joblib sentence-transformers torch fastapi uvicorn
 
 ### 3. Verify Structure
 ls
-
 ##### Expected: data/ models/ src/ main.py requirements.txt
 
 
