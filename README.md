@@ -28,6 +28,7 @@ sentiment_project/
 ├── requirements.txt          # Python dependencies
 └── README.md                 # Project Documentation
 
+```
 
 ## Setup & Installation
 
