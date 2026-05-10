@@ -34,7 +34,7 @@ sentiment_project/
 ```text
 
 # 1. Clone Repository
-git clone <your-repo-link>
+git clone https://github.com/aperture-sud/sentiment_project.git
 cd sentiment_project
 
 # 2. Install Dependencies
