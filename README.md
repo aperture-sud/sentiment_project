@@ -27,7 +27,6 @@ sentiment_project/
 ├── urgent_triage.txt         # Auto-generated logs for urgent reviews
 ├── requirements.txt          # Python dependencies
 └── README.md                 # Project Documentation
-
 ```
 
 ## Setup, Installation and Run
@@ -62,5 +61,4 @@ uvicorn main:app --reload
 
 # 7. Run CLI (Optional)
 python3 src/predict.py
-
 ```
