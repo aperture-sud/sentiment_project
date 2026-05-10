@@ -32,7 +32,6 @@ sentiment_project/
 
 ## Setup, Installation and Run
 ```text
-
 # 1. Clone Repository
 git clone https://github.com/aperture-sud/sentiment_project.git
 cd sentiment_project
